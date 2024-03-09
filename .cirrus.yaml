@@ -1,0 +1,19 @@
+container:
+  image: archlinux:base-devel
+  cpu: 1
+  memory: 1G
+
+build_task:
+  preparation_script:
+    - pacman -Suy --noconfirm rustup
+    # apt install -y rust-all curl build-essential
+    # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # rustup toolchain link system /usr
+    - rustup toolchain install nightly
+    - rustup default nightly
+    - rustup component add rust-src
+    - rustup component add llvm-tools-preview
+    - cargo install bootimage
+    - cargo bootimage
+  bin_artifacts:
+    path: "target/*/*/*.bin"
