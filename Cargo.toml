@@ -5,4 +5,4 @@ authors = ["Artem Neizhmak <ytartem0007@gmail.com>"]
 edition = "2024"
 
 [dependencies]
-bootloader = "0.11.7"
+bootloader_api = "0.11"
